@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pie.css">
+  <script src="timer.js">
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="pie-box">
+    <div class="pie" id="clockPie">
+      <div class="pie__segment" style="--value: 0; --over50: 0"></div>
+      <!-- value 超過 50 就要把 over50 設為 1 -->
+    </div>
+  <div class="control">
+    <button class="button" id="startBtn">start</button>
+    <button class="button" id="cancelBtn" disabled>cancel</button>
+  </div>
+</div>   
+</body>
+</html>

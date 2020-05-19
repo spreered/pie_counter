@@ -1,0 +1,48 @@
+.pie {
+  background: var(--remain-color, #639);
+  border-radius: 100%;
+  height: calc(var(--size, 200) * 1px);
+  width: calc(var(--size, 200) * 1px);
+  position: relative;
+  /* overflow: hidden; */
+  clip-path: circle(50%);
+}
+.pie__segment {
+  /* border: 1px dashed #000; */
+  /* overflow: hidden; */
+  --a: calc(var(--over50, 0) * -100%);
+  --b: calc((1 + var(--over50, 0)) * 100%);
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+  clip-path: polygon(var(--a) var(--a),var(--b) var(--a),var(--b) var(--b), var(--a) var(--b));
+  /* 改使用剪裁多邊形 */
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  transform: translate(0%, 50%) rotate( calc(var(--offset, 90)* 1deg));
+  transform-origin: 100% 50%;
+  transition: clip-path 0s;
+  /* transition-delay: 1s; */
+}
+.pie__segment:after,
+.pie__segment:before {
+  background: var(--pass-color, #f00); 
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.pie__segment:before {
+  --degrees: calc((var(--value,0)/100)*360);
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform: translate(0, 100%) rotate( calc(var(--degrees) * 1deg));
+  /* 因為 pie__segment 已經轉了90 度, 所以 translate 100% 會往左移 */
+  transform-origin: 50% 0%;
+  /* transition: transform 1s; */
+}
+.pie__segment:after {
+  opacity: var(--over50, 0);
+  /* transition-delay: 1s; */
+}
